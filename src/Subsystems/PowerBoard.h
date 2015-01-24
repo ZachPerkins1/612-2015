@@ -8,7 +8,7 @@ class PowerBoard: public Subsystem
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	PowerDistributionPanel* powerboard;
+	PowerDistributionPanel* powerboard; 
 public:
 	PowerBoard();//Initializer for panel
 	void InitDefaultCommand();//Figure this out
@@ -19,7 +19,7 @@ public:
 	double GetTotalPower();//Total power drawn from the monitored PDP channels
 	double GetTotalEnergy();//Total energy drawn from the monitored PDP channels
 	void ResetTotalEnergy();//Reset total energy drawn from PDP
-	void ClearStickyDefaults();//Remove all of the fault flags on the PDP
+	void ClearStickyFaults();//Remove all of the fault flags on the PDP
 	void UpdateTable();//Update the table for this sendable object with the latest values
 	void StartLiveWindowMode();//Starts sendable object automatically respond to value changes reflect value on table
 	void StopLiveWindowMode();//Ends the above
