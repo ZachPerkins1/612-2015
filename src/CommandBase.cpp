@@ -15,6 +15,7 @@ PowerManagement* CommandBase::powermanagement = NULL;
 CommandBase::CommandBase(char const *name) :
 		Command(name)
 {
+
 }
 
 CommandBase::CommandBase() :
