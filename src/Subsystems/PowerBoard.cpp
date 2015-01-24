@@ -4,10 +4,10 @@
 PowerBoard::PowerDistributionPanel() :
 		Subsystem("PowerDistributionPanel");
 {
-
+	powerboard = new PowerDistributionPanel();
 }
 
-void ExampleSubsystem::InitDefaultCommand()
+void PowerBoard::InitDefaultCommand()
 {
 	//Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
@@ -15,80 +15,63 @@ void ExampleSubsystem::InitDefaultCommand()
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-
-
-PowerDistributionPanel()
-{
-	PowerDistributionPanel();
-}
 	
 
-void InitTable(ITable* subTable)
-{
-	InitTable(subTable);
-}
-	
-
-void InitDefaultCommand()
+void PowerBoard::InitDefaultCommand()
 {
 	//Fill this later
 }
-double GetVoltage()
+double PowerBoard::GetVoltage()
 {
-	GetVoltage();
+	powerboard->GetVoltage();
 }
 	
-double GetTemperature()
+double PowerBoard::GetTemperature()
 {
-	GetTemperature();
+	powerboard->GetTemperature();
 }
 
-double GetCurrent(uint8_t channel)
+double PowerBoard::GetCurrent(uint8_t channel)
 {
-	GetCurrent(channel);
+	powerboard->GetCurrent(channel);
 }
 
-double GetTotalCurrent()
+double PowerBoard::GetTotalCurrent()
 {
-	GetTotalCurrent();
+	powerboard->GetTotalCurrent();
 }
 
-double GetTotalPower()
+double PowerBoard::GetTotalPower()
 {
-	GetTotalPower();
+	powerboard->GetTotalPower();
 }
 
-double GetTotalEnergy()
+double PowerBoard::GetTotalEnergy()
 {
-	GetTotalEnergy();
+	powerboard->GetTotalEnergy();
 }
 
-void ResetTotalEnergy()
+void PowerBoard::ResetTotalEnergy()
 {	
-	ResetTotalEnergy();
+	powerboard->ResetTotalEnergy();
 }
 
-void ClearStickyDefaults()
+void PowerBoard::ClearStickyDefaults()
 {
-	ClearStickyDefaults();
+	powerboard->ClearStickyDefaults();
 }
 
-void UpdateTable()
+void PowerBoard::UpdateTable()
 {
-	UpdateTable();
+	powerboard->UpdateTable();
 }
 
-void StartLiveWindowMode()
+void PowerBoard::StartLiveWindowMode()
 {
-	StartLiveWindowMode();
+	powerboard->StartLiveWindowMode();
 }
 
-void StopLiveWindowMode()
+void PowerBoard::StopLiveWindowMode()
 {
-	StopLiveWindowMode();
-}
-
-ITable* GetTable()
-{
-	GetTable();
+	powerboard->StopLiveWindowMode();
 }
