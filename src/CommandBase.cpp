@@ -10,6 +10,7 @@ ExampleSubsystem* CommandBase::examplesubsystem = NULL;
 OI* CommandBase::oi = NULL;
 Elevator* CommandBase::elevator = NULL;
 MecanumDrivetrain* CommandBase::drivetrain = NULL;
+PowerManagement* CommandBase::powermanagement = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -30,4 +31,5 @@ void CommandBase::init()
 	oi = new OI();
 	elevator = new Elevator();
 	drivetrain = new MecanumDrivetrain(MOTOR_LR, MOTOR_LF, MOTOR_RR, MOTOR_RF);
+	powermanagement = new PowerManagement();
 }

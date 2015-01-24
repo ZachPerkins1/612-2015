@@ -26,6 +26,7 @@ public:
 	static OI* oi;
 	static Elevator* elevator;
 	static MecanumDrivetrain* drivetrain;
+	static PowerManagement* powermanagement;
 };
 
 #endif

@@ -10,7 +10,7 @@ private:
 	// for methods that implement subsystem capabilities
 	PowerDistributionPanel* powerboard;
 public:
-	PowerDistributionPanel();//Initializer for panel
+	PowerBoard();//Initializer for panel
 	void InitDefaultCommand();//Figure this out
 	double GetVoltage();//Returns input value of the PDP
 	double GetTemperature();//Returns temperature of the PDP
