@@ -8,6 +8,7 @@
 #include "WPILib.h"
 #include "Subsystems/Elevator.h"
 #include "Subsystems/MecanumDrivetrain.h"
+#include "Subsystems/PowerManagement.h"
 #include "RobotMap.h"
 
 /**
