@@ -8,6 +8,7 @@
 #include "Subsystems/Elevator.h"
 #include "Subsystems/MecanumDrivetrain.h"
 #include "Subsystems/PowerManagement.h"
+#include "Subsystems/PowerBoard.h"
 #include "RobotMap.h"
 
 /**

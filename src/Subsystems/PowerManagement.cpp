@@ -1,5 +1,6 @@
 #include "PowerManagement.h"
 #include "../RobotMap.h"
+#include "../CommandBase.h"
 
 PowerManagement::PowerManagement() :
 		Subsystem("ExampleSubsystem")
@@ -9,12 +10,13 @@ PowerManagement::PowerManagement() :
 
 void PowerManagement::InitDefaultCommand()
 {
-	SetDefaultCommand(new DisablePowerManagement());
+	//SetDefaultCommand(new DisablePowerManagement());
+	//TODO fix
 }
 
 void PowerManagement::Periodic()
 {
-	float voltage = powerboard->GetVoltage();
+	float voltage = CommandBase::powerboard->GetVoltage();
 	if (componentsEnabled)
 	{
 		if (voltage > DISABLE_THRESHOLD)
