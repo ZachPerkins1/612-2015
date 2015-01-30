@@ -36,5 +36,8 @@ const uint32_t SOLENOID_LATCH = 1;
 
 const uint32_t RELAY_LATCH = 1;
 
+const float ENABLE_THRESHOLD = -2147483647; //Place Holder Value
+const float DISABLE_THRESHOLD = -2147483647; //Place Holder Value
+
 
 #endif

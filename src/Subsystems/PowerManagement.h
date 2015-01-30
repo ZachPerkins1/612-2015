@@ -16,19 +16,15 @@ class PowerManagement: public Subsystem
  */
 
 private:
-	bool powerManagementOn = false; //System only runs when this is true
-	std::vector<Talon> motorControllers; //Keeps track of all the motor controllers being logged
-	std::vector<bool> controllerStatus; //Keeps track of the status of those motor controllers
+	bool componentsEnabled = true; //System only runs when this is true
 
 public:
 	PowerManagement();
 	void InitDefaultCommand();
 	void setEnabled(bool isEnabled); //Sets the power management system as disabled or enabled
-	void setDisableVoltage(float); //Sets the voltage that will start turning components off
-	void setEnableVoltage(float); //Sets the voltage at which systems may be re-enabled
-	bool isActive(SpeedController*); //Returns if the given speed controller is enabled
-	void addSpeedController(SpeedController*); //Adds a speed controller to be disabled when power usage is too high
-
+	void setThresholdVoltage(float, float); //Range in which it stays off
+	bool isActive(); //Returns if the given speed controller is enabled
+	void Periodic(); //For checking voltage. Used in enabling PowerManagement
 };
 
 #endif

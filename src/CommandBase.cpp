@@ -6,7 +6,7 @@
 #include "RobotMap.h"
 
 // Initialize a single static instance of all of your subsystems to NULL
-ExampleSubsystem* CommandBase::examplesubsystem = NULL;
+PowerBoard* powerboard = NULL;
 OI* CommandBase::oi = NULL;
 Elevator* CommandBase::elevator = NULL;
 MecanumDrivetrain* CommandBase::drivetrain = NULL;
@@ -33,4 +33,5 @@ void CommandBase::init()
 	elevator = new Elevator();
 	drivetrain = new MecanumDrivetrain(MOTOR_LR, MOTOR_LF, MOTOR_RR, MOTOR_RF);
 	powermanagement = new PowerManagement();
+	powerboard = new PowerBoard();
 }
