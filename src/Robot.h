@@ -16,6 +16,7 @@ private:
 	double currentAcceleration = 0; // used for acceleration and accelerometer
 	double maxAcceleration = 0; // used for highest acceleration during total run time
 	Robot* robot;
+	NetworkTable* networktable;
 public:
 	void RobotInit();
 	void AutonomousInit();

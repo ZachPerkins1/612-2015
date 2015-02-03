@@ -30,6 +30,8 @@ void Robot::DisabledInit()
 void Robot::DisabledPeriodic()
 {
 	Scheduler::GetInstance()->Run();
+	double n = networktable->GetNumber("number");
+	printf("Current test value in network table: %f", n);
 }
 
 void Robot::AutonomousInit()
