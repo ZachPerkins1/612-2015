@@ -19,16 +19,12 @@ void Robot::RobotInit()
 	joystick = new Joystick(1);//Right hand joystick
 	speedgun = new BuiltInAccelerometer(); // New accelerometer called speedgun
 	robot = this;
+	networktable = NetworkTable::GetTable("datatable");
 }
 
 void Robot::DisabledInit()
 {
 
-}
-
-void DisabledPeriodic()
-{
-	Scheduler::GetInstance()->Run();
 }
 
 void Robot::DisabledPeriodic()
