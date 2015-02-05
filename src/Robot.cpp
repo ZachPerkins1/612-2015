@@ -55,6 +55,8 @@ void Robot::TeleopInit()
 	// this line or comment it out.
 	if (autonomousCommand != NULL)
 		autonomousCommand->Cancel();
+		CameraServer::GetInstance()->SetQuality(50);
+		CameraServer::GetInstance()->StartAutomaticCapture("cam0");
 }
 
 void Robot::TeleopPeriodic()
