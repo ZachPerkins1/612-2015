@@ -5,30 +5,44 @@ BlinkLED::BlinkLED()
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(led);
+	timer = new Timer();
 }
 
 // Called just before this Command runs the first time
 void BlinkLED::Initialize()
 {
-
+	timer->Start();
+	state = 0;
 }
 
 // Called repeatedly when this Command is scheduled to run
 void BlinkLED::Execute()
 {
-	//Blink through all the colors, all of them!!!!!!!!
-	led->ledOn(1); //red
-	Wait(1);
-	led->ledOff(1);
-	Wait(1);
-	led->ledOn(2); //green
-	Wait(1);
-	led->ledOff(2);
-	Wait(1);
-	led->ledOn(3); //blue
-	Wait(1);
-	led->ledOff(3);
-	Wait(1);
+	if (timer->Get() > 1.0)
+	{
+		state++;
+		timer->Reset();
+	}
+
+	switch(state)
+	{
+	case 0:
+		led->ledOn(1);
+		break;
+	case 1:
+		led->ledOn(2);
+		led->ledOff(1);
+		break;
+	case 2:
+		led->ledOn(3);
+		led->ledOff(2);
+		break;
+	case 3:
+		led->ledOff(3);
+		break;
+	default:
+		state = 0;
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -50,4 +64,5 @@ void BlinkLED::Interrupted()
 	led->ledOff(1);
 	led->ledOff(2);
 	led->ledOff(3);
+	timer->Stop();
 }
