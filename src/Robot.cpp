@@ -11,7 +11,7 @@ void Robot::RobotInit()
 	CommandBase::init();
 	lw = LiveWindow::GetInstance();
 	joy = new SmoothJoystick(0);
-
+	blinkCommand = new BlinkLED();
 	drivetrain = new Drivetrain();
 
 	gyro = new Gyro(GYRO_CH); //todo
@@ -40,7 +40,9 @@ void Robot::AutonomousPeriodic()
 
 void Robot::TeleopInit()
 {
-	printf("Teleop Initialized");
+	printf("Teleop Initialized \n");
+	blinkCommand->Start();
+	printf("Start Blinking!");
 }
 
 void Robot::TeleopPeriodic()
@@ -54,6 +56,7 @@ void Robot::TeleopPeriodic()
 	if(joy->GetModValue(LEFT_X) == 0.0f && joy->GetModValue(LEFT_Y) == 0.0f && joy->GetModValue(RIGHT_X) == 0.0f)
 	{
 		drivetrain->move(0.0f,0.0f,0.0f);
+		printf("Drivetrain move now \n");
 	}
 
 
@@ -61,11 +64,12 @@ void Robot::TeleopPeriodic()
 
 	if (interval >= 30) //Prints every half second
 	{
-		printf("Robot facing %f degrees", gyro->GetAngle());
+		printf("Robot facing %f degrees \n", gyro->GetAngle());
 		interval = 0;
 	}
 	interval++;
 	//moveCommand->Start();
+	Scheduler::GetInstance()->Run();
 }
 
 void Robot::TestInit()
@@ -76,11 +80,11 @@ void Robot::TestInit()
 void Robot::TestPeriodic()
 {
 //	lw->Run();
-
 }
 
 float Robot::getValues(int axis)
 {
+	printf("GetValues running now! \n");
 	float val = joy->GetRawAxis(axis);
 	if (axis < TOLORANCE && axis > -TOLORANCE)
 	{

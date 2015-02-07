@@ -7,6 +7,7 @@
 ExampleSubsystem* CommandBase::examplesubsystem = NULL;
 OI* CommandBase::oi = NULL;
 Drivetrain* CommandBase::drivetrain = NULL;
+LED* CommandBase::led = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -23,7 +24,9 @@ void CommandBase::init()
 {
 	// Create a single static instance of all of your subsystems. The following
 	// line should be repeated for each subsystem in the project.
+
 	examplesubsystem = new ExampleSubsystem();
 	drivetrain = new Drivetrain();
+	led = new LED(LED_CHANRED, LED_CHANGREEN, LED_CHANBLUE);
 	oi = new OI();
 }

@@ -33,6 +33,10 @@ const uint32_t TALON_RL = 4;
 const uint32_t TALON_FR = 2;
 const uint32_t TALON_RR = 3;
 
+const uint32_t LED_CHANRED   = 7;
+const uint32_t LED_CHANGREEN = 8;
+const uint32_t LED_CHANBLUE  = 9;
+
 //Sensors
 const uint32_t GYRO_CH = 0;
 

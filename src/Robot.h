@@ -9,6 +9,7 @@
 #define SRC_ROBOT_H_
 
 #include "Commands/Move.h"
+#include "Commands/BlinkLED.h"
 #include "SmoothJoystick.h"
 
 class Robot: public IterativeRobot
@@ -20,6 +21,7 @@ private:
 	//Move* move;
 	Gyro* gyro;
 	//Move* moveCommand = new Move();
+	BlinkLED* blinkCommand;
 public:
 	void RobotInit();
 	void AutonomousInit();
