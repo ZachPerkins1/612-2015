@@ -4,6 +4,8 @@
 PowerBoard::PowerBoard() :
 		Subsystem("PowerBoard")
 {
+
+
 	powerboard = new PowerDistributionPanel();
 }
 

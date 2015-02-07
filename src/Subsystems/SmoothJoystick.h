@@ -8,8 +8,7 @@
 class SmoothJoystick: public Joystick
 {
 private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
+	NetworkTable* datatable;
 public:
 	SmoothJoystick(int port); //Constructor
 	//void InitDefaultCommand();

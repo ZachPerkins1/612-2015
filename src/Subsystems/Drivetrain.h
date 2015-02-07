@@ -11,6 +11,7 @@ class Drivetrain: public Subsystem, public RobotDrive
 {
 private:
 	//bool useIR = false;
+	NetworkTable* datatable;
 
 	AnalogInput* ir;
 	Ultrasonic* ultra;
@@ -23,6 +24,8 @@ private:
 
 	bool useIR = false;
 	//bool SwitchSensor(float distance); // Called in CheckSensor
+
+	void logEncoders();
 
 public:
 	Drivetrain(uint32_t talonchannel1,

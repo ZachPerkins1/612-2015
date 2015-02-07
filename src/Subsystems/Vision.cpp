@@ -4,7 +4,7 @@
 Vision::Vision() :
 		Subsystem("Vision")
 {
-
+	datatable = NetworkTable::GetTable("vision_data");
 }
 
 void Vision::InitDefaultCommand()

@@ -3,6 +3,8 @@
 Elevator::Elevator() :
 	Subsystem("Elevator")
 {
+	datatable = NetworkTable::GetTable("elevator_data");
+
 	talon = new Talon(ELEVATOR_MOTOR);
 	topSwitch = new DigitalInput(ELEVATOR_TOP_SWITCH);
 	bottomSwitch = new DigitalInput(ELEVATOR_BOTTOM_SWITCH);

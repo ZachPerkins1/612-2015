@@ -7,6 +7,8 @@
 
 class Elevator : public Subsystem {
 private:
+	NetworkTable* datatable;
+
 	Talon* talon;
 	DigitalInput* topSwitch;
 	DigitalInput* bottomSwitch;

@@ -4,6 +4,7 @@
 
 SmoothJoystick::SmoothJoystick(int port):Joystick(port)
 {
+	datatable = NetworkTable::GetTable("joystick_data");
 }
 
 //Below, JoystickHand is used to see which joystick you want. left = 0, right = 1

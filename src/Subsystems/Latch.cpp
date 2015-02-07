@@ -4,6 +4,7 @@
 Latch::Latch() :
 	Subsystem("Latch")
 {
+	datatable = NetworkTable::GetTable("latch_data");
     // Initialize the variable you made in Latch.h
 	solenoid = new Solenoid(SOLENOID_LATCH);
 	relay = new Relay(RELAY_LATCH);

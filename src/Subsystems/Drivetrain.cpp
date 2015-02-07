@@ -15,9 +15,12 @@ Drivetrain::Drivetrain(uint32_t talonchannel1,
 				   new Talon(talonchannel4))
 
 {
+	datatable = NetworkTable::GetTable("drivetrain_data");
+
 	SetSafetyEnabled(true);
 	SetExpiration(MOTOR_EXPIRATION);
 	std::printf("Expiration = %f", GetExpiration());
+
 	ir = new AnalogInput(infraredchannel);
 
 	encoderLF = new Encoder(ENCODER_LF_A, ENCODER_LF_B);
@@ -41,6 +44,7 @@ void Drivetrain::move(float magnitude, float direction, float rotation)
 {
 	MecanumDrive_Polar(magnitude, direction, rotation);
 	m_safetyHelper->Feed();
+
 }
 
 void Drivetrain::stop()
@@ -80,6 +84,19 @@ int32_t Drivetrain::getDistance(MotorLocation motor)
 	default:
 		return 0; //In case the enum somehow gets an addition
 	}
+}
+
+void Drivetrain::logEncoders()
+{
+	int32_t distanceLF = getDistance(LEFT_FRONT);
+	int32_t distanceLR = getDistance(LEFT_REAR);
+	int32_t distanceRF = getDistance(RIGHT_FRONT);
+	int32_t distanceRR = getDistance(RIGHT_REAR);
+
+	datatable->PutNumber("encoder_lf", distanceLF);
+	datatable->PutNumber("encoder_lr", distanceLR);
+	datatable->PutNumber("encoder_rf", distanceRF);
+	datatable->PutNumber("encoder_rr", distanceRR);
 }
 
 /*bool Drivetrain::SwitchSensor(float distance) // Infared sensor is used by default

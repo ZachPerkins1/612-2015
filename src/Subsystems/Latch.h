@@ -8,6 +8,8 @@
 class Latch: public Subsystem
 {
 private:
+	NetworkTable* datatable;
+
     // I think you're going to need a private variable.
     // The variable type would be either a Relay or Solenoid
     // see https://chantilly612code.github.io/612-2015/classRelay.html
