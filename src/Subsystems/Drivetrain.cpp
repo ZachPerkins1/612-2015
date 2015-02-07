@@ -44,7 +44,7 @@ void Drivetrain::move(float magnitude, float direction, float rotation)
 {
 	MecanumDrive_Polar(magnitude, direction, rotation);
 	m_safetyHelper->Feed();
-
+	logEncoders();
 }
 
 void Drivetrain::stop()
