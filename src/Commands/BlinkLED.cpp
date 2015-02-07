@@ -18,7 +18,7 @@ void BlinkLED::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void BlinkLED::Execute()
 {
-	if (timer->Get() > 1.0)
+	if (timer->Get() > 1.0) //Set to 0.01 for actual robotics rave party
 	{
 		state++;
 		timer->Reset();

@@ -23,15 +23,15 @@ void LED::ledOn(int led)
 	{
 	case 1:
 		led1->Set(1);
-		printf("Red light \n");
+		//printf("Red light \n");
 		break;
 	case 2:
 		led2->Set(1);
-		printf("Green light \n");
+		//printf("Green light \n");
 		break;
 	case 3:
 		led3->Set(1);
-		printf("Blue light \n");
+		//printf("Blue light \n");
 		break;
 	default:
 		printf("Invalid led number. \n");

@@ -43,6 +43,8 @@ void Robot::TeleopInit()
 	printf("Teleop Initialized \n");
 	blinkCommand->Start();
 	printf("Start Blinking!");
+
+	//drivetrain->m_safetyHelper->Feed();
 }
 
 void Robot::TeleopPeriodic()
@@ -53,10 +55,10 @@ void Robot::TeleopPeriodic()
 	float y = joy->GetModValue(LEFT_Y);
 	float rotation = joy->GetModValue(RIGHT_X);
 
-	if(joy->GetModValue(LEFT_X) == 0.0f && joy->GetModValue(LEFT_Y) == 0.0f && joy->GetModValue(RIGHT_X) == 0.0f)
+	if(abs(joy->GetModValue(LEFT_X)) < 0.001f && abs(joy->GetModValue(LEFT_Y)) < 0.001f && abs(joy->GetModValue(RIGHT_X)) < 0.001f)
 	{
 		drivetrain->move(0.0f,0.0f,0.0f);
-		printf("Drivetrain move now \n");
+		//printf("Drivetrain not moving now! \n");
 	}
 
 
