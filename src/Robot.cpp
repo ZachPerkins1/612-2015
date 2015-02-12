@@ -12,8 +12,6 @@ void Robot::RobotInit()
 	lw = LiveWindow::GetInstance();
 	joy = new SmoothJoystick(0);
 
-	drivetrain = new Drivetrain();
-
 	gyro = new Gyro(GYRO_CH); //todo
 	//Remember to do this, and it must come after the drivetrain constructor call
 }

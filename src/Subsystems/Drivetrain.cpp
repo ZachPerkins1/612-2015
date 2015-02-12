@@ -2,10 +2,17 @@
 #include "../RobotMap.h"
 #include <MotorSafetyHelper.h>
 
-Drivetrain::Drivetrain():
+Drivetrain::Drivetrain(CANTalon* fl,CANTalon* rl,CANTalon* fr,CANTalon* rr):
 		Subsystem("Drivetrain"),
-		RobotDrive(new CANTalon(TALON_FL), new CANTalon(TALON_RL), new CANTalon(TALON_FR), new CANTalon(TALON_RR))
+		RobotDrive(fl,rl,fr,rr)
 {
+	std::printf("Initializing Drivetrain");
+	FL = fl;
+	RL = rl;
+	FR = fr;
+	RR = rr;
+
+
 	SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 	SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
 	SetSafetyEnabled(true);
@@ -33,7 +40,6 @@ void Drivetrain::move(float x, float y, float rotation)
 */
 	// FEED ME SEYMOUR
 	this->m_safetyHelper->Feed();
-	this->
 
 	//now that they are swapped, plug them in correctly
 	MecanumDrive_Cartesian(x*THROTTLE,y*THROTTLE,rotation*THROTTLE); //for some reason, this works if x and rotation are swapped
@@ -47,6 +53,13 @@ void Drivetrain::move(float x, float y, float rotation)
 			{
 				std::printf("Motor has been timed out!\n");
 			}
+			/*
+			float e_fl = (float)FL->GetPosition();
+			float e_rl = (float)RL->GetPosition();
+			float e_fr = (float)FR->GetPosition();
+			float e_rr = (float)RR->GetPosition();
+			std::printf("FL = %f\tRL = %f\tFR = %f\tRR = %f\n", e_fl,e_rl,e_fr,e_rr);
+			*/
 		}
 		count++;
 	#endif

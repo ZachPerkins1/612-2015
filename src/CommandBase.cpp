@@ -24,6 +24,6 @@ void CommandBase::init()
 	// Create a single static instance of all of your subsystems. The following
 	// line should be repeated for each subsystem in the project.
 	examplesubsystem = new ExampleSubsystem();
-	drivetrain = new Drivetrain();
+	drivetrain = new Drivetrain(new CANTalon(TALON_FL), new CANTalon(TALON_RL), new CANTalon(TALON_FR), new CANTalon(TALON_RR));
 	oi = new OI();
 }
