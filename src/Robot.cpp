@@ -5,6 +5,7 @@
 #include "CommandBase.h"
 #include "Robot.h"
 #include "RobotMap.h"
+#include "Commands/DriveDistance.h"
 
 void Robot::RobotInit()
 {
@@ -12,7 +13,7 @@ void Robot::RobotInit()
 	lw = LiveWindow::GetInstance();
 	joy = new SmoothJoystick(0);
 
-	drivetrain = new Drivetrain();
+	//drivetrain = new Drivetrain();
 
 	gyro = new Gyro(GYRO_CH); //todo
 	//Remember to do this, and it must come after the drivetrain constructor call
@@ -20,7 +21,6 @@ void Robot::RobotInit()
 
 void Robot::DisabledInit()
 {
-
 }
 
 void Robot::DisabledPeriodic()
@@ -30,7 +30,8 @@ void Robot::DisabledPeriodic()
 
 void Robot::AutonomousInit()
 {
-
+	DriveDistance* d = new DriveDistance(1250);
+	d->Start();
 }
 
 void Robot::AutonomousPeriodic()
@@ -50,6 +51,7 @@ void Robot::TeleopPeriodic()
 	float x = joy->GetModValue(LEFT_X);
 	float y = joy->GetModValue(LEFT_Y);
 	float rotation = joy->GetModValue(RIGHT_X);
+	Drivetrain* drivetrain = CommandBase::drivetrain;
 
 	if(joy->GetModValue(LEFT_X) == 0.0f && joy->GetModValue(LEFT_Y) == 0.0f && joy->GetModValue(RIGHT_X) == 0.0f)
 	{
@@ -59,9 +61,10 @@ void Robot::TeleopPeriodic()
 
 	drivetrain->move(x,y,rotation);
 
+
 	if (interval >= 30) //Prints every half second
 	{
-		printf("Robot facing %f degrees", gyro->GetAngle());
+		printf("Robot facing %f degrees\n", gyro->GetAngle());
 		interval = 0;
 	}
 	interval++;
