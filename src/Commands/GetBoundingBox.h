@@ -1,13 +1,13 @@
-#ifndef ElevatorRaise_H
-#define ElevatorRaise_H
+#ifndef BOUNDING_BOX_H
+#define BOUNDING_BOX_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class ElevatorRaise: public CommandBase
+class GetBoundingBox: public CommandBase
 {
 public:
-	ElevatorRaise();
+	GetBoundingBox();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
