@@ -24,10 +24,10 @@ const uint32_t ENCODER_RR_B = 0;
 const uint32_t ENCODER_FR_A = 0;
 const uint32_t ENCODER_FR_B = 0;
 
-const uint32_t MOTOR_FR = 4;
+const uint32_t MOTOR_FR = 2;
 const uint32_t MOTOR_FL = 1;
 const uint32_t MOTOR_RR = 3;
-const uint32_t MOTOR_RL = 2;
+const uint32_t MOTOR_RL = 4;
 
 const uint32_t INFRARED = 1; //fix this number
 
@@ -50,7 +50,7 @@ const uint32_t SOLENOID_LATCH = 1;
 const uint32_t RELAY_LATCH = 1;
 
 //Pneumatics
-const uint32_t PCM = 11;
+const uint32_t PCM = 5;
 
 
 
@@ -75,4 +75,6 @@ static const uint32_t BUTTON_B = 2;
 static const uint32_t BUTTON_X = 3;
 static const uint32_t BUTTON_Y = 4;
 
+static const uint32_t BUTTON_L1 = 5;
+static const uint32_t BUTTON_R1 = 6;
 #endif

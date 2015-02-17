@@ -5,11 +5,14 @@
 #include <Joystick.h>
 #include <Compressor.h>
 #include <CANTalon.h>
+#include <DoubleSolenoid.h>
+#include <Solenoid.h>
 
 class Robot: public IterativeRobot
 {
 private:
 	Joystick* joystick;
+	Joystick* gun;
 	//all acceleration is measured in meters per second squared
 	// Used for speedgun, a accelerometer
 	RobotDrive* drivetrain;
@@ -20,6 +23,8 @@ private:
 	CANTalon* fr;
 	CANTalon* rl;
 	CANTalon* rr;
+	DoubleSolenoid* sol;
+	Solenoid* sol2;
 	/*
 	Encoder* frontLeft;
 	Encoder* frontRight;
@@ -39,7 +44,7 @@ public:
 
 	//612 functions
 	void TestPulley();
-	float getInput(uint32_t);
+	float getInput(uint32_t, Joystick* g);
 	//612 Objects
 	enum ROBOT_STATUS{
 		NONE,
@@ -52,6 +57,10 @@ public:
 		TELEOPPERIODIC,
 		TESTINIT,
 		TESTPERIODIC
+	};
+	enum CLAMP_POS{
+		OPEN,
+		CLOSE
 	};
 	ROBOT_STATUS robot_status;
 };
