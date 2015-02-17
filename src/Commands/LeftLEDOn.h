@@ -1,8 +1,9 @@
-#ifndef LEFTLEDON_H
-#define LEFTLEDON_H
+#ifndef LeftLEDON_H
+#define LeftLEDON_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
+#include "../RobotMap.h"
 
 class LeftLEDOn: public CommandBase
 {

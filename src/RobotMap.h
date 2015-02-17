@@ -38,6 +38,11 @@ const uint32_t ELEVATOR_BOTTOM_SWITCH = 1; // The channel for the bottom switch 
 const uint32_t ELEVATOR_ENCODER_A = 1; // The channels for the elevator encoder
 const uint32_t ELEVATOR_ENCODER_B = 2;
 
+const uint32_t L_ELEVATOR_LED_GREEN = 0; //ports for the LEDs TODO
+const uint32_t L_ELEVATOR_LED_RED = 1;
+const uint32_t R_ELEVATOR_LED_GREEN = 2;
+const uint32_t R_ELEVATOR_LED_RED = 3;
+
 const uint32_t LEFT_IR  = 1;
 const uint32_t RIGHT_IR = 2;
 
