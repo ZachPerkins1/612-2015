@@ -15,8 +15,12 @@ private:
 	//DigitalInput* topSwitch;
 	//DigitalInput* bottomSwitch;
 	Encoder* encoder;
-	//AnalogInput* leftIR;
-	//AnalogInput* rightIR;
+	AnalogInput* leftIR; //These were commented out earlier, we need them for turning on LEDs
+	AnalogInput* rightIR;
+	DigitalOutput* leftLedGreen;
+	DigitalOutput* leftLedRed;
+	DigitalOutput* rightLedGreen;
+	DigitalOutput* rightLedRed;
 	float voltageToDistance(float val);
 	typedef enum _MainSensor
 	{

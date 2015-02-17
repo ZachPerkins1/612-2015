@@ -11,12 +11,16 @@ Elevator::Elevator() :
 	//topSwitch = new DigitalInput(ELEVATOR_TOP_SWITCH);
 	//bottomSwitch = new DigitalInput(ELEVATOR_BOTTOM_SWITCH);
 	encoder = new Encoder(ELEVATOR_ENCODER_A, ELEVATOR_ENCODER_B);
-	//leftIR = new AnalogInput(LEFT_IR);
-	//rightIR = new AnalogInput(RIGHT_IR);
+	leftIR = new AnalogInput(LEFT_IR);
+	rightIR = new AnalogInput(RIGHT_IR);
 	sense = IR; //default to IR sensor
 	ultrasonic = new AnalogInput(ELEVATOR_ULTRASONIC);
-	elevatorIR = new AnalogInput(ELEVATOR_IR);
+	//elevatorIR = new AnalogInput(ELEVATOR_IR); We need 2, not 1
 	latchSol = new DoubleSolenoid(SOLENOIDCHAN1, SOLENOIDCHAN2);
+	leftLedGreen = new DigitalOutput(L_ELEVATOR_LED_GREEN); //LEDs to show if we're aligned
+	leftLedRed = new DigitalOutput(L_ELEVATOR_LED_RED);
+	rightLedGreen = new DigitalOutput(R_ELEVATOR_LED_GREEN);
+	rightLedRed = new DigitalOutput(R_ELEVATOR_LED_RED);
 }
 
 Elevator::~Elevator()
@@ -80,34 +84,43 @@ Encoder* Elevator::getEncoder()
 
 bool Elevator::getLeftAlignment()
 {
-	/*
-	float val = leftIR->GetVoltage();
+
+	/* float val = leftIR->GetVoltage();
 	val = IRVoltageToDistance(val);
 	float dist = 0.0f;
 	if (val >= (dist - BUFFER) && val <= (dist + BUFFER)) //Distance to ground +/- 2 inches TODO
 	{
+		printf("Crate not found\n");
+		leftLedGreen->Set(1); //green light on
+		leftLedRed->Set(0);
 		return false;
 	}
-
+	printf("Crate found\n");
+	leftLedRed->Set(1);
+	leftLedGreen->Set(0);
 	return true;
-	*/
+*/
 	return false;
 }
 
 bool Elevator::getRightAlignment()
 {
-	/*
+/*
 	float val = rightIR->GetVoltage();
-	val = IRVoltageToDistance(val);
-	float dist = 0.0f; //FIX THIS PLACEHOLDER VALUE TODO
+	val = IRVoltageToDistance(val); //TODO test to make sure this works
+	float dist = getElevatorHeight(); //This should work make sure it does
 	
-	if (val >= (dist - BUFFER) && val <= (dist + BUFFER)) //Distance to ground +/- 2 inches TODO
+	if (val >= (dist - BUFFER) && val <= (dist + BUFFER)) //Distance to ground +/- 2 inches (buffer) TODO
 	{
-		printf("Crate not found");
+		printf("Crate not found\n");
+		rightLedGreen->Set(1);
+		rightLedRed->Set(0);
 		return false;
 	}
+	rightLedRed->Set(1); //make LED red
+	rightLedGreen->Set(0); //turn off Green LED
 	*/
-	return false;//true;
+	return true;
 }
 
 float Elevator::IRVoltageToDistance(float val)
@@ -119,8 +132,10 @@ float Elevator::getElevatorHeight()
 {
 	if (sense == IR)
 	{
-		float voltage = 1.0f;//elevatorIR->GetVoltage();
-		return IRVoltageToDistance(voltage);
+		//float voltage = 1.0f;
+		float l = leftIR->GetVoltage();
+		float r = rightIR->GetVoltage();
+		return IRVoltageToDistance((l+r)/2.0); //returns average of the two sensors
 	}
 	else
 	{
@@ -133,7 +148,7 @@ float Elevator::UltrasonicVoltageToDistance(float voltage)
 {
 	//int16_t inputVoltage = ultrasonic->GetValue(); //Zach said this should always be 5, so I'll try that
 	float voltsPerInch = 5.0/512.0; //Very small number
-	voltsPerInch *= 1000; //converts to mV
+	voltsPerInch *= 1000; //converts to milliVolts
 	//formula from here: http://www.maxbotix.com/articles/032.htm confused by it
 	return voltage/voltsPerInch; //TODO test to make sure this works
 	
@@ -151,7 +166,7 @@ Elevator::MainSensor Elevator::switchSensor(float IRDistance, float UDistance)
 	}
 	else //Buffer zone
 	{
-		return sense;
+		return sense; //doesn't change
 	}
 }
 
